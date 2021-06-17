@@ -9,9 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^12.5.1",
+    "discord.js": "^12.5.3",
     "dotenv-safe": "^8.2.0",
-    "minecraft-server-util": "^3.4.2",
+    "minecraft-server-util": "^3.5.1",
     "rcon-client": "^4.2.3"
   }
 }
