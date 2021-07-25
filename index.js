@@ -1,5 +1,5 @@
 require("dotenv-safe").config();
-const { Client } = require("discord.js");
+const { Client, TextChannel } = require("discord.js");
 const util = require("minecraft-server-util");
 const { Rcon } = require("rcon-client");
 const dns = require("dns").promises;
@@ -50,8 +50,17 @@ function isset(object) {
   return false;
 }
 
-async function update() {
+async function getChannel() {
   const channel = await bot.channels.fetch(channelId);
+  if (channel instanceof TextChannel) {
+    return channel;
+  } else {
+    throw new Error("not a text channel");
+  }
+}
+
+async function update() {
+  const channel = await getChannel();
   const message = await channel.messages.fetch(messageId);
   // Create new embed from given structure
   const embed = JSON.parse(JSON.stringify(embedStructure));
@@ -118,7 +127,8 @@ async function update() {
     }
     // Edit the message with the new embed
     message.edit({ embed });
-  } catch {
+  } catch (error) {
+    console.error(error);
     // Set timestamp
     embed.timestamp = new Date().toISOString();
     // Set status info
