@@ -1,7 +1,7 @@
 import { config as load_env } from "dotenv-safe";
 load_env();
 
-import { Client, TextChannel, Intents } from "discord.js";
+import { Client, TextChannel, Intents, Message } from "discord.js";
 
 import { registerCommands } from "./command-registration.js";
 
@@ -13,20 +13,28 @@ import { getStatusEmbed, runRCON } from "./utils/minecraft.js";
 // Refresh interval, in seconds
 const refresh_interval = 10;
 
-async function getChannel() {
+let message: Message = null;
+
+async function getMessage() {
   const channel = await bot.channels.fetch(config.discord.channelId);
   if (channel instanceof TextChannel) {
-    return channel;
+    message = await channel.messages.fetch(config.discord.messageId);
+    return message;
   } else {
     throw new Error("Channel fetched by ID is not a text channel");
   }
 }
 
 async function update() {
-  const channel = await getChannel();
-  const message = await channel.messages.fetch(config.discord.messageId);
-  const statusEmbed = await getStatusEmbed();
-  message.edit({ embeds: [statusEmbed] });
+  if (message === null) {
+    message = await getMessage();
+  }
+  await message.removeAttachments();
+  const { embeds, files } = await getStatusEmbed();
+  message.edit({
+    embeds: [embeds[0]],
+    files: [files[0]],
+  });
 }
 
 async function serverTests() {

@@ -1,8 +1,10 @@
 import { status as mcStatus, RCON } from "minecraft-server-util";
 
+import dataUriToBuffer from "data-uri-to-buffer";
 import { promises as dns } from "dns";
 
 import config from "../config.js";
+import { MessageAttachment, MessageEmbed } from "discord.js";
 
 const hostname = config.minecraft.hostname;
 
@@ -47,38 +49,36 @@ export async function getStatusEmbed() {
   const colour_red = 16711680;
 
   // Create new embed from given structure
-  const embed = {
-    author: {
-      name: "Minecraft Server Status",
-      icon_url: `https://api.mcsrvstat.us/icon/${hostname}`,
-    },
-    color: colour_red,
-    fields: [
-      {
-        name: "IP",
-        value: `\`${hostname}\``,
-        inline: false,
-      },
-    ],
-    timestamp: new Date().toISOString(),
-    footer: {
-      text: "Refreshes every 10 seconds",
-    },
-  };
+  const embed = new MessageEmbed();
+
+  embed.setAuthor("Minecraft Server Status");
+  embed.setFooter("Refreshes every 10 seconds");
+  embed.addField("IP", `\`${hostname}\``, false);
+  embed.setTimestamp(new Date());
+  embed.setColor(colour_red);
+
+  const files: MessageAttachment[] = [];
 
   try {
     const status = await getStatus();
+    const image = dataUriToBuffer(status.favicon);
+    const fileName = "server_icon.png";
+    const file = new MessageAttachment(image, fileName);
+
+    files.push(file);
+
+    embed.setAuthor("Minecraft Server Status", `attachment://${fileName}`);
+
+    embed.setColor(colour_green);
+
     const version = status.version.name;
     const desc = status.motd.clean;
     const onlinePlayers = status.players.online;
     const maxPlayers = status.players.max;
     const samplePlayers = status.players.sample;
-    // Set timestamp
-    embed.timestamp = new Date().toISOString();
-    // Set status info
-    embed.color = colour_green;
+
     // Set online status
-    embed.fields.push({
+    embed.addFields({
       name: "Status",
       value: "Online",
       inline: true,
@@ -87,7 +87,7 @@ export async function getStatusEmbed() {
     // embed.description = `This server is whitelisted; add yourself to the whitelist using \`!mh whitelist add <username>\` \n e.g. \`!mh whitelist add Player1\``;
     // Add version info
     if (isset(version)) {
-      embed.fields.push({
+      embed.addFields({
         name: "Version",
         value: version,
         inline: true,
@@ -95,7 +95,7 @@ export async function getStatusEmbed() {
     }
     // Add description info
     if (isset(desc)) {
-      embed.fields.push({
+      embed.addFields({
         name: "Description",
         value: desc,
         inline: false,
@@ -103,7 +103,7 @@ export async function getStatusEmbed() {
     }
     // Add players online info
     if (isset(onlinePlayers) && isset(maxPlayers)) {
-      embed.fields.push({
+      embed.addFields({
         name: "Players Online",
         value: "**" + onlinePlayers + "** / " + maxPlayers,
         inline: false,
@@ -123,24 +123,20 @@ export async function getStatusEmbed() {
     }
     // if the player list string isn't empty, add Player List field to the embed
     if (playerListString !== "") {
-      embed.fields.push({
+      embed.addFields({
         name: "Player List",
         value: playerListString,
         inline: false,
       });
     }
   } catch (error) {
-    // Set timestamp
-    embed.timestamp = new Date().toISOString();
-    // Set status info
-    embed.color = colour_red;
     // Set online status
-    embed.fields.push({
+    embed.addFields({
       name: "Status",
       value: "Offline",
       inline: true,
     });
   }
 
-  return embed;
+  return { embeds: [embed], files: files };
 }

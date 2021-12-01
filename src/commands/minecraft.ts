@@ -99,7 +99,8 @@ async function handleInteraction(interaction: CommandInteraction<CacheType>) {
     const status = await getStatusEmbed();
     await interaction.reply({
       content: `Here is the current Minecraft server status!`,
-      embeds: [status],
+      embeds: status.embeds,
+      files: status.files,
     });
   } else {
     await interaction.reply(`Unfortunately, I can't answer that right now!`);
