@@ -32,8 +32,8 @@ async function update() {
   await message.removeAttachments();
   const { embeds, files } = await getStatusEmbed();
   message.edit({
-    embeds: [embeds[0]],
-    files: [files[0]],
+    embeds: embeds,
+    files: files,
   });
 }
 
