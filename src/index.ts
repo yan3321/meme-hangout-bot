@@ -8,7 +8,7 @@ import { registerCommands } from "./command-registration.js";
 const bot = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES] });
 
 import config from "./config.js";
-import { getStatusEmbed, runRCON } from "./utils/minecraft.js";
+import { getStatus, getStatusEmbed, runRCON } from "./utils/minecraft.js";
 
 // Refresh interval, in seconds
 const refresh_interval = 10;
@@ -38,14 +38,41 @@ async function update() {
 }
 
 async function serverTests() {
-  console.log("Testing RCON functionality...");
+  async function statusTest() {
+    try {
+      const status = await getStatus();
+      console.log(status.motd);
+      return true;
+    } catch (error) {
+      console.error(error);
+      console.error("Status test failed!");
+      return false;
+    }
+  }
+
+  async function rconTest() {
+    console.log("Testing RCON functionality...");
+    try {
+      const result = await runRCON("whitelist list");
+      console.log(result);
+      console.log("RCON results received!");
+      return true;
+    } catch (error) {
+      console.error(error);
+      console.error("Server functionality tests failed!");
+      return false;
+    }
+  }
+
+  console.log("Testing server functionality...");
   try {
-    const result = await runRCON("whitelist list");
-    console.log(result);
-    console.log("RCON results received!");
+    const [status, rcon] = await Promise.all([statusTest(), rconTest()]);
+    if (!status || !rcon) {
+      throw new Error();
+    }
   } catch (error) {
     console.error(error);
-    console.error("RCON tests failed!");
+    console.error("Server functionality tests failed!");
   }
 }
 
