@@ -10,7 +10,7 @@ import { commandFile } from "./types.js";
 
 const __dirname = (() => {
   const x = path.dirname(decodeURI(new URL(import.meta.url).pathname));
-  return path.resolve(process.platform == "win32" ? x.substr(1) : x);
+  return path.resolve(process.platform == "win32" ? x.substring(1) : x);
 })();
 
 const commands = [];
