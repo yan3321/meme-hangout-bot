@@ -52,8 +52,8 @@ export async function getStatusEmbed() {
   // Create new embed from given structure
   const embed = new MessageEmbed();
 
-  embed.setAuthor("Minecraft Server Status");
-  embed.setFooter("Refreshes every 10 seconds");
+  embed.setAuthor({ name: "Minecraft Server Status" });
+  embed.setFooter({ text: "Refreshes every 10 seconds" });
   embed.addField("IP", `\`${hostname}\``, false);
   embed.setTimestamp(new Date());
   embed.setColor(colour_red);
@@ -68,7 +68,10 @@ export async function getStatusEmbed() {
 
     files.push(file);
 
-    embed.setAuthor("Minecraft Server Status", `attachment://${fileName}`);
+    embed.setAuthor({
+      name: "Minecraft Server Status",
+      iconURL: `attachment://${fileName}`,
+    });
 
     embed.setColor(colour_green);
 
