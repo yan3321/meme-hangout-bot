@@ -16,7 +16,7 @@
     "@discordjs/rest": "^0.2.0-canary.0",
     "data-uri-to-buffer": "^4.0.0",
     "discord-api-types": "^0.26.1",
-    "discord.js": "^13.5.1",
+    "discord.js": "^13.6.0",
     "dotenv-safe": "^8.2.0",
     "minecraft-server-util": "^5.2.8"
   },
