@@ -44,11 +44,13 @@ async function update() {
     if (message === null) {
       message = await getMessage();
     }
+    console.dir(message.embeds, { depth: null });
     const results = await Promise.all([
       message?.removeAttachments(),
       getStatusEmbed(),
     ]);
     const { embeds, files } = results[1];
+    console.log(files);
     await message.edit({
       embeds: embeds,
       // files: files,

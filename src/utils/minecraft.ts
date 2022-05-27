@@ -63,17 +63,18 @@ export async function getStatusEmbed() {
   try {
     const status = await getStatus();
 
-    const fileName = "server_icon.png";
-
-    if (status.favicon) {
-      const image = dataUriToBuffer(status.favicon);
-      const file = new MessageAttachment(image, fileName);
-      files.push(file);
-    }
+    // if (status.favicon) {
+    //   const fileName = "server_icon.png";
+    //   const image = dataUriToBuffer(status.favicon);
+    //   const file = new MessageAttachment(image, fileName);
+    //   files.push(file);
+    // }
 
     embed.setAuthor({
       name: "Minecraft Server Status",
-      iconURL: `attachment://${fileName}`,
+      iconURL: files[0]
+        ? `attachment://${files[0].name}`
+        : `https://api.mcsrvstat.us/icon/${hostname}`,
     });
 
     embed.setColor(colour_green);
