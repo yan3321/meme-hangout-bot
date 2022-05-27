@@ -13,7 +13,7 @@ import { getStatus, getStatusEmbed, runRCON } from "./utils/minecraft.js";
 // Refresh interval, in seconds
 const refresh_interval = 10;
 
-let message: Message = null;
+let message: Message | null = null;
 
 async function getMessage() {
   const channel = await bot.channels.fetch(config.discord.channelId);
@@ -78,7 +78,7 @@ async function serverTests() {
 
 // Start the loop when the bot's up
 bot.on("ready", () => {
-  const presence = bot.user.setActivity(config.minecraft.hostname, {
+  const presence = bot.user?.setActivity(config.minecraft.hostname, {
     type: "WATCHING",
   });
   console.log(presence);

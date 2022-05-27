@@ -87,9 +87,9 @@ async function handleInteraction(interaction: CommandInteraction<CacheType>) {
     if (!offline) {
       const reply = await rconHandler(
         interaction.options.getSubcommand(true),
-        interaction.options.getString("username", false)
+        interaction.options.getString("username", false) ?? undefined
       );
-      await interaction.reply(reply);
+      if (reply) await interaction.reply(reply);
     } else {
       await interaction.reply(
         `The Minecraft server appears to be unreachable at the moment.`

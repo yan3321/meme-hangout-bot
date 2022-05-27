@@ -29,7 +29,7 @@ export async function serverOffline() {
   }
 }
 
-let srvHost: string = null;
+let srvHost: string | null = null;
 
 export async function runRCON(command: string) {
   const rcon = new RCON();
@@ -62,11 +62,14 @@ export async function getStatusEmbed() {
 
   try {
     const status = await getStatus();
-    const image = dataUriToBuffer(status.favicon);
-    const fileName = "server_icon.png";
-    const file = new MessageAttachment(image, fileName);
 
-    files.push(file);
+    const fileName = "server_icon.png";
+
+    if (status.favicon) {
+      const image = dataUriToBuffer(status.favicon);
+      const file = new MessageAttachment(image, fileName);
+      files.push(file);
+    }
 
     embed.setAuthor({
       name: "Minecraft Server Status",
@@ -114,16 +117,15 @@ export async function getStatusEmbed() {
       });
     }
     let playerListString = "";
-    if (isset(samplePlayers)) {
+    if (samplePlayers) {
       // sort the player list array alphabetically, case-insensitive
-      samplePlayers.sort(function (a, b) {
+      samplePlayers.sort((a, b) => {
         return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
       });
       // add the players to the concatenated string
-      function addToString(playerObject) {
-        playerListString += "• `" + playerObject.name + "`\n";
-      }
-      samplePlayers.forEach(addToString);
+      samplePlayers.forEach((plr) => {
+        playerListString += "• `" + plr.name + "`\n";
+      });
     }
     // if the player list string isn't empty, add Player List field to the embed
     if (playerListString !== "") {

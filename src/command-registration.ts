@@ -7,18 +7,19 @@ import { promises as fs } from "fs";
 
 import config from "./config.js";
 import { commandFile } from "./types.js";
+import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types/v10";
 
 const __dirname = (() => {
   const x = path.dirname(decodeURI(new URL(import.meta.url).pathname));
   return path.resolve(process.platform == "win32" ? x.substring(1) : x);
 })();
 
-const commands = [];
+const commands: RESTPostAPIApplicationCommandsJSONBody[] = [];
 const commandFiles = (
   await fs.readdir(path.resolve(__dirname, "./commands"))
 ).filter((file) => file.endsWith(".js"));
 
-const rest = new REST({ version: "9" }).setToken(config.discord.token);
+const rest = new REST({ version: "10" }).setToken(config.discord.token);
 
 export async function registerCommands(client: Client) {
   try {
