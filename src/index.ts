@@ -1,17 +1,18 @@
 import { config as load_env } from "dotenv-safe";
 load_env();
-
+import { performance } from "perf_hooks";
+import { promisify } from "util";
 import { Client, TextChannel, Intents, Message } from "discord.js";
 
 import { registerCommands } from "./command-registration.js";
-
-const bot = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES] });
+import { getStatus, getStatusEmbed, runRCON } from "./utils/minecraft.js";
 
 import config from "./config.js";
-import { getStatus, getStatusEmbed, runRCON } from "./utils/minecraft.js";
 
 // Refresh interval, in seconds
 const refresh_interval = 10;
+
+const bot = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES] });
 
 let message: Message | null = null;
 
@@ -25,23 +26,50 @@ async function getMessage() {
   }
 }
 
-async function update() {
-  if (message === null) {
-    message = await getMessage();
+async function loopTimeout() {
+  return promisify(setTimeout)(refresh_interval * 1000);
+}
+
+async function startLoop() {
+  while (true) {
+    await update();
+    await loopTimeout();
   }
-  await message.removeAttachments();
-  const { embeds, files } = await getStatusEmbed();
-  message.edit({
-    embeds: embeds,
-    files: files,
-  });
+}
+
+async function update() {
+  const t1 = new Date();
+  try {
+    const n1 = performance.now();
+    if (message === null) {
+      message = await getMessage();
+    }
+    const results = await Promise.all([
+      message?.removeAttachments(),
+      getStatusEmbed(),
+    ]);
+    const { embeds, files } = results[1];
+    await message.edit({
+      embeds: embeds,
+      // files: files,
+    });
+    const t2 = new Date();
+    const n2 = performance.now();
+    console.log(
+      `Successfully updated in ${((n2 - n1) / 1000).toFixed(
+        2
+      )} s, current timestamp ${t2.toLocaleTimeString()}, original timestamp ${t1.toLocaleTimeString()}`
+    );
+  } catch (error) {
+    console.error(`Error occurred at timestamp ${t1.toLocaleTimeString()}`);
+    console.error(error);
+  }
 }
 
 async function serverTests() {
   async function statusTest() {
     try {
       const status = await getStatus();
-      console.log(status.motd);
       return true;
     } catch (error) {
       console.error(error);
@@ -54,7 +82,6 @@ async function serverTests() {
     console.log("Testing RCON functionality...");
     try {
       const result = await runRCON("whitelist list");
-      console.log(result);
       console.log("RCON results received!");
       return true;
     } catch (error) {
@@ -77,13 +104,12 @@ async function serverTests() {
 }
 
 // Start the loop when the bot's up
-bot.on("ready", () => {
+bot.once("ready", async () => {
   const presence = bot.user?.setActivity(config.minecraft.hostname, {
     type: "WATCHING",
   });
   console.log(presence);
-  update();
-  setInterval(update, refresh_interval * 1000);
+  startLoop();
 });
 
 // Login to the bot with the token
