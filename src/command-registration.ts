@@ -1,20 +1,19 @@
 import { Client } from "discord.js";
 import { REST } from "@discordjs/rest";
-import { Routes } from "discord-api-types/v9";
+import { Routes } from "discord-api-types/v10";
 
 import path from "path";
 import { promises as fs } from "fs";
 
 import config from "./config.js";
 import { commandFile } from "./types.js";
-import { RESTPostAPIApplicationCommandsJSONBody } from "discord-api-types/v10";
 
 const __dirname = (() => {
   const x = path.dirname(decodeURI(new URL(import.meta.url).pathname));
   return path.resolve(process.platform == "win32" ? x.substring(1) : x);
 })();
 
-const commands: RESTPostAPIApplicationCommandsJSONBody[] = [];
+const commands: unknown[] = [];
 const commandFiles = (
   await fs.readdir(path.resolve(__dirname, "./commands"))
 ).filter((file) => file.endsWith(".js"));
