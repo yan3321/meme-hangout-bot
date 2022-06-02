@@ -15,7 +15,7 @@
     "@discordjs/builders": "^0.13.0",
     "@discordjs/rest": "^0.4.1",
     "data-uri-to-buffer": "^4.0.0",
-    "discord-api-types": "^0.33.1",
+    "discord-api-types": "^0.33.2",
     "discord.js": "^13.7.0",
     "dotenv-safe": "^8.2.0",
     "minecraft-server-util": "^5.2.8"
