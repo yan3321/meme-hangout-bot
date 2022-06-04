@@ -12,3 +12,11 @@ Built with Discord.JS.
 
 - Node.js (v16+ LTS)
 - `pnpm` package manager (`npm i --location=global pnpm`)
+
+## Basic setup guide
+
+- Clone the repository
+- Install dependencies `pnpm i`
+- Create `.env` file and configure based on `.env.example`
+- Start with `pnpm start`
+- Alternatively, build to `dist/index.js` with `pnpm build` (e.g. for use with PM2)
