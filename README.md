@@ -1,6 +1,6 @@
 # meme-hangout-bot
 
-![Meme Hangout Bot Header](mh-bot-header.png)
+![Meme Hangout Bot Header](docs/media/mh-bot-header.png)
 
 ## About
 
