@@ -7,9 +7,9 @@ specifiers:
   '@types/node': ^16.11.41
   data-uri-to-buffer: ^4.0.0
   discord-api-types: ^0.34.0
-  discord.js: ^13.8.0
+  discord.js: ^13.8.1
   dotenv-safe: ^8.2.0
-  minecraft-server-util: ^5.2.9
+  minecraft-server-util: ^5.2.10
   typescript: ^4.7.4
 
 dependencies:
@@ -17,9 +17,9 @@ dependencies:
   '@discordjs/rest': 0.5.0
   data-uri-to-buffer: 4.0.0
   discord-api-types: 0.34.0
-  discord.js: 13.8.0
+  discord.js: 13.8.1
   dotenv-safe: 8.2.0
-  minecraft-server-util: 5.2.9
+  minecraft-server-util: 5.2.10
 
 devDependencies:
   '@types/dotenv-safe': 8.1.2
@@ -32,7 +32,7 @@ packages:
     resolution: {integrity: sha512-+fqLIqa9wN3R+kvlld8sgG0nt04BAZxdCDP4t2qZ9TJsquLWA+xMtT8Waibb3d4li4AQS+IOfjiHAznv/dhHgQ==}
     engines: {node: '>=16.9.0'}
     dependencies:
-      '@sapphire/shapeshift': 3.3.0
+      '@sapphire/shapeshift': 3.3.2
       '@sindresorhus/is': 4.6.0
       discord-api-types: 0.33.5
       fast-deep-equal: 3.1.3
@@ -44,7 +44,7 @@ packages:
     resolution: {integrity: sha512-w1UfCPzx2iKycn6qh/f0c+PcDpcTHzHr7TXALXu/a4gKHGamiSg3lP8GhYswweSJk/Q5cbFLHZUsnoY3MVKNAg==}
     engines: {node: '>=16.9.0'}
     dependencies:
-      '@sapphire/shapeshift': 3.3.0
+      '@sapphire/shapeshift': 3.3.2
       '@sindresorhus/is': 4.6.0
       discord-api-types: 0.33.5
       fast-deep-equal: 3.1.3
@@ -74,8 +74,8 @@ packages:
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
-  /@sapphire/shapeshift/3.3.0:
-    resolution: {integrity: sha512-6MNupTaIXtyVCHuejbTIE/Wmw35FKbpfRhiPCkxaQHm76iHICaWNO0oej0lipLb7vhK8mQHQn3zE6umOVvwGLw==}
+  /@sapphire/shapeshift/3.3.2:
+    resolution: {integrity: sha512-8+M8sLmT4RTXJCvI1Z69UiB56himVup8WJVm7ubt5j3HJmVK+l1OI4xTLkLVh1efupOhZR9jrl2YBIv4Lsag7A==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
     dev: false
 
@@ -140,8 +140,8 @@ packages:
     resolution: {integrity: sha512-xwlhwiLZ11+8+ou1JlPOLJkwpu8qklm+aUm9JF06YC59fSo4CD7gQqsbUBxqevqheLx+WhRgJOHjDbjI0Q+Ecw==}
     dev: false
 
-  /discord.js/13.8.0:
-    resolution: {integrity: sha512-EPAA/2VLycYN5wSzavqa4iJ6qj3UtQFtHw5TH/60Fj29ymfEsCQVn//o1mTpwDxzwb+rPIrWhkxKIGGnjfv0Iw==}
+  /discord.js/13.8.1:
+    resolution: {integrity: sha512-jOsD+4tEZWWx0RHVyH+FBcqoTrsL+d5Mm5p+ULQOdU0qSaxhLNkWYig+yDHNZoND7nlkXX3qi+BW+gO5erWylg==}
     engines: {node: '>=16.6.0', npm: '>=7.0.0'}
     dependencies:
       '@discordjs/builders': 0.14.0
@@ -207,8 +207,8 @@ packages:
     resolution: {integrity: sha512-5TuTRjrRupSTruea0nRC37r0FdhkS1O4wIJKAYfwJRCQd/X4Zyl/dVIs96h9UVW6N8jhIuz9pNkrDsqyN7VBdA==}
     dev: false
 
-  /minecraft-server-util/5.2.9:
-    resolution: {integrity: sha512-MLaST5JnTlutO8++8FRa4RBck2EM4QMfkdkJ8b4LsjSTHtZQihD/zma2Bks9weEJnH3Q0xWmb5wLScv/UNDQyg==}
+  /minecraft-server-util/5.2.10:
+    resolution: {integrity: sha512-ittectNMBpOm2dmyzMGXBx2PeGcusJ6Ksc6VA24D3ZxEeHl4y+8bpmFYED14hW9G3ucP4JxgJ070R9KUxmdjkw==}
     engines: {node: '>=10.0.0'}
     dependencies:
       minecraft-motd-util: 1.1.12
