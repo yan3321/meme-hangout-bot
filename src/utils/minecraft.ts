@@ -5,7 +5,10 @@ import dataUriToBuffer from "data-uri-to-buffer";
 import { promises as dns } from "dns";
 
 import config from "../config.js";
-import { MessageAttachment, MessageEmbed } from "discord.js";
+import {
+  AttachmentBuilder as MessageAttachment,
+  EmbedBuilder as MessageEmbed,
+} from "discord.js";
 
 const hostname = config.minecraft.hostname;
 
@@ -54,7 +57,7 @@ export async function getStatusEmbed() {
 
   embed.setAuthor({ name: "Minecraft Server Status" });
   embed.setFooter({ text: "Refreshes every 10 seconds" });
-  embed.addField("IP", `\`${hostname}\``, false);
+  embed.addFields([{ name: "IP", value: `\`${hostname}\``, inline: false }]);
   embed.setTimestamp(new Date());
   embed.setColor(colour_red);
 

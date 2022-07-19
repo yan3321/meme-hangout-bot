@@ -32,7 +32,7 @@ export async function registerCommands(client: Client) {
       const interactionHandler = commandData.handleInteraction;
       commands.push(data.toJSON());
       client.on("interactionCreate", async (interaction) => {
-        if (interaction.isCommand()) {
+        if (interaction.isChatInputCommand()) {
           if (data.name === interaction.commandName) {
             try {
               await interactionHandler(interaction);

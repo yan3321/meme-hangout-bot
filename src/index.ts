@@ -2,7 +2,7 @@ import { config as load_env } from "dotenv-safe";
 load_env();
 import { performance } from "perf_hooks";
 import { promisify } from "util";
-import { Client, TextChannel, Intents, Message } from "discord.js";
+import { Client, TextChannel, Message, ActivityType } from "discord.js";
 
 import { registerCommands } from "./command-registration.js";
 import { getStatus, getStatusEmbed, runRCON } from "./utils/minecraft.js";
@@ -12,7 +12,7 @@ import config from "./config.js";
 // Refresh interval, in seconds
 const refresh_interval = 10;
 
-const bot = new Client({ intents: [Intents.FLAGS.GUILD_MESSAGES] });
+const bot = new Client({ intents: ["GuildMessages"] });
 
 let message: Message | null = null;
 
@@ -108,7 +108,7 @@ async function serverTests() {
 // Start the loop when the bot's up
 bot.once("ready", async () => {
   const presence = bot.user?.setActivity(config.minecraft.hostname, {
-    type: "WATCHING",
+    type: ActivityType.Watching,
   });
   console.log(presence);
   startLoop();

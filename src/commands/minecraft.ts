@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "@discordjs/builders";
-import { CacheType, CommandInteraction } from "discord.js";
+import { CacheType, ChatInputCommandInteraction } from "discord.js";
 
 import { getStatusEmbed, runRCON, serverOffline } from "../utils/minecraft.js";
 import { commandFile } from "../types.js";
@@ -79,7 +79,9 @@ const data = new SlashCommandBuilder()
       .setDescription("Get the current Minecraft server status!")
   );
 
-async function handleInteraction(interaction: CommandInteraction<CacheType>) {
+async function handleInteraction(
+  interaction: ChatInputCommandInteraction<CacheType>
+) {
   const subcommandGroup = interaction.options.getSubcommandGroup(false);
   const subcommand = interaction.options.getSubcommand(true);
   if (subcommandGroup === "whitelist") {
