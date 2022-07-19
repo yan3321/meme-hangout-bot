@@ -40,28 +40,28 @@ async function startLoop() {
 async function update() {
   const t1 = new Date();
   try {
-    const n1 = performance.now();
+    // const n1 = performance.now();
     if (message === null) {
       message = await getMessage();
     }
-    console.dir(message.embeds, { depth: null });
+    // console.dir(message.embeds, { depth: null });
     const results = await Promise.all([
       message?.removeAttachments(),
       getStatusEmbed(),
     ]);
     const { embeds, files } = results[1];
-    console.log(files);
+    // console.log(files);
     await message.edit({
       embeds: embeds,
       // files: files,
     });
-    const t2 = new Date();
-    const n2 = performance.now();
-    console.log(
-      `Successfully updated in ${((n2 - n1) / 1000).toFixed(
-        2
-      )} s, current timestamp ${t2.toLocaleTimeString()}, original timestamp ${t1.toLocaleTimeString()}`
-    );
+    // const t2 = new Date();
+    // const n2 = performance.now();
+    // console.log(
+    //   `Successfully updated in ${((n2 - n1) / 1000).toFixed(
+    //     2
+    //   )} s, current timestamp ${t2.toLocaleTimeString()}, original timestamp ${t1.toLocaleTimeString()}`
+    // );
   } catch (error) {
     console.error(`Error occurred at timestamp ${t1.toLocaleTimeString()}`);
     console.error(error);
