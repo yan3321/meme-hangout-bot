@@ -2,11 +2,11 @@ lockfileVersion: 5.4
 
 specifiers:
   '@discordjs/builders': ^1.0.0
-  '@discordjs/rest': ^1.0.0
+  '@discordjs/rest': ^1.0.1
   '@types/dotenv-safe': ^8.1.2
-  '@types/node': ^16.11.45
+  '@types/node': ^16.11.46
   data-uri-to-buffer: ^4.0.0
-  discord-api-types: ^0.36.2
+  discord-api-types: ^0.36.3
   discord.js: ^14.0.3
   dotenv-safe: ^8.2.0
   minecraft-server-util: ^5.3.0
@@ -14,16 +14,16 @@ specifiers:
 
 dependencies:
   '@discordjs/builders': 1.0.0
-  '@discordjs/rest': 1.0.0
+  '@discordjs/rest': 1.0.1
   data-uri-to-buffer: 4.0.0
-  discord-api-types: 0.36.2
+  discord-api-types: 0.36.3
   discord.js: 14.0.3
   dotenv-safe: 8.2.0
   minecraft-server-util: 5.3.0
 
 devDependencies:
   '@types/dotenv-safe': 8.1.2
-  '@types/node': 16.11.45
+  '@types/node': 16.11.46
   typescript: 4.7.4
 
 packages:
@@ -33,26 +33,26 @@ packages:
     engines: {node: '>=16.9.0'}
     dependencies:
       '@sapphire/shapeshift': 3.5.1
-      discord-api-types: 0.36.2
+      discord-api-types: 0.36.3
       fast-deep-equal: 3.1.3
       ts-mixer: 6.0.1
       tslib: 2.4.0
     dev: false
 
-  /@discordjs/collection/1.0.0:
-    resolution: {integrity: sha512-nAxDQYE5dNAzEGQ7HU20sujDsG5vLowUKCEqZkKUIlrXERZFTt/60zKUj/g4+AVCGeq+pXC5hivMaNtiC+PY5Q==}
+  /@discordjs/collection/1.0.1:
+    resolution: {integrity: sha512-5V/wswzR3r2RVYXLxxg4TvrAnBhVCNgHTXhC+OUtLoriJ072rPMHo+Iw1SS1vrCckp8Es40XM411+WkNRPaXFw==}
     engines: {node: '>=16.9.0'}
     dev: false
 
-  /@discordjs/rest/1.0.0:
-    resolution: {integrity: sha512-uDAvnE0P2a8axMdD4C51EGjvCRQ2HZk2Yxf6vHWZgIqG87D8DGKMPwmquIxrrB07MjV+rwci2ObU+mGhGP+bJg==}
+  /@discordjs/rest/1.0.1:
+    resolution: {integrity: sha512-w08CTKVzzYYvKxEjXKOs9AdS7KQ1J502TrPfF8eCZ2lF6AfKuMP/32YgDakiwIyYTDjEQS/v0nKLSFcncHRMtg==}
     engines: {node: '>=16.9.0'}
     dependencies:
-      '@discordjs/collection': 1.0.0
+      '@discordjs/collection': 1.0.1
       '@sapphire/async-queue': 1.3.2
       '@sapphire/snowflake': 3.2.2
-      discord-api-types: 0.36.2
-      file-type: 17.1.2
+      discord-api-types: 0.36.3
+      file-type: 17.1.4
       tslib: 2.4.0
       undici: 5.8.0
     dev: false
@@ -85,13 +85,13 @@ packages:
       dotenv: 8.6.0
     dev: true
 
-  /@types/node/16.11.45:
-    resolution: {integrity: sha512-3rKg/L5x0rofKuuUt5zlXzOnKyIHXmIu5R8A0TuNDMF2062/AOIDBciFIjToLEJ/9F9DzkHNot+BpNsMI1OLdQ==}
+  /@types/node/16.11.46:
+    resolution: {integrity: sha512-x+sfpb2dMrhCQPL4NAGs64Z9hh0t72aP0dg+PuZidmPr/0Gj5ELQTjD/t46dq3DF/8ZvSHOaIyDIbAsdPshyVQ==}
 
   /@types/ws/8.5.3:
     resolution: {integrity: sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==}
     dependencies:
-      '@types/node': 16.11.45
+      '@types/node': 16.11.46
     dev: false
 
   /data-uri-to-buffer/4.0.0:
@@ -99,8 +99,8 @@ packages:
     engines: {node: '>= 12'}
     dev: false
 
-  /discord-api-types/0.36.2:
-    resolution: {integrity: sha512-TunPAvzwneK/m5fr4hxH3bMsrtI22nr9yjfHyo5NBGMjpsAauGNiGCmwoFf0oO3jSd2mZiKUvZwCKDaB166u2Q==}
+  /discord-api-types/0.36.3:
+    resolution: {integrity: sha512-bz/NDyG0KBo/tY14vSkrwQ/n3HKPf87a0WFW/1M9+tXYK+vp5Z5EksawfCWo2zkAc6o7CClc0eff1Pjrqznlwg==}
     dev: false
 
   /discord.js/14.0.3:
@@ -108,11 +108,11 @@ packages:
     engines: {node: '>=16.9.0'}
     dependencies:
       '@discordjs/builders': 1.0.0
-      '@discordjs/collection': 1.0.0
-      '@discordjs/rest': 1.0.0
+      '@discordjs/collection': 1.0.1
+      '@discordjs/rest': 1.0.1
       '@sapphire/snowflake': 3.2.2
       '@types/ws': 8.5.3
-      discord-api-types: 0.36.2
+      discord-api-types: 0.36.3
       fast-deep-equal: 3.1.3
       lodash.snakecase: 4.1.1
       tslib: 2.4.0
@@ -137,12 +137,12 @@ packages:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
     dev: false
 
-  /file-type/17.1.2:
-    resolution: {integrity: sha512-3thBUSfa9YEUEGO/NAAiQGvjujZxZiJTF6xNwyDn6kB0NcEtwMn5ttkGG9jGwm/Nt/t8U1bpBNqyBNZCz4F4ig==}
+  /file-type/17.1.4:
+    resolution: {integrity: sha512-3w/rJUUPBj6CYhVER3D5JCKwYJJiC36uj5dP+LnyubHI6H6FJo1TeWVCEA09YLVoZqV3/mLP26j9+Pz1GjAyjQ==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       readable-web-to-node-stream: 3.0.2
-      strtok3: 7.0.0-alpha.8
+      strtok3: 7.0.0-alpha.9
       token-types: 5.0.0-alpha.2
     dev: false
 
@@ -204,8 +204,8 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /strtok3/7.0.0-alpha.8:
-    resolution: {integrity: sha512-u+k19v+rTxBjGYxncRQjGvZYwYvEd0uP3D+uHKe/s4WB1eXS5ZwpZsTlBu5xSS4zEd89mTXECXg6WW3FSeV8cA==}
+  /strtok3/7.0.0-alpha.9:
+    resolution: {integrity: sha512-G8WxjBFjTZ77toVElv1i7k3jCXNkBB14FVaZ/6LIOka/WGo4La5XHLrU7neFVLdKbXESZf4BejVKZu5maOmocA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
       '@tokenizer/token': 0.3.0
