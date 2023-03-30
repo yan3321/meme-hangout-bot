@@ -10,7 +10,7 @@ Built with Discord.JS.
 
 ## Requirements
 
-- Node.js (v16+ LTS)
+- Node.js (v18+ LTS)
 - `pnpm` package manager (`npm i --location=global pnpm`)
 
 ## Basic setup guide
