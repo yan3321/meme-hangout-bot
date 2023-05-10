@@ -12,17 +12,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@discordjs/builders": "^1.5.0",
-    "@discordjs/rest": "^1.6.0",
+    "@discordjs/builders": "^1.6.3",
+    "@discordjs/rest": "^1.7.1",
     "data-uri-to-buffer": "^4.0.1",
-    "discord-api-types": "^0.37.37",
-    "discord.js": "^14.8.0",
+    "discord-api-types": "^0.37.42",
+    "discord.js": "^14.11.0",
     "dotenv-safe": "^8.2.0",
-    "minecraft-server-util": "^5.4.1"
+    "minecraft-server-util": "^5.4.2"
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
-    "@types/node": "^18.15.11",
-    "typescript": "^5.0.2"
+    "@types/node": "^18.16.7",
+    "typescript": "^5.0.4"
   }
 }
