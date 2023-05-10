@@ -77,7 +77,7 @@ export async function getStatusEmbed() {
       name: "Minecraft Server Status",
       iconURL: files[0]
         ? `attachment://${files[0].name}`
-        : `https://api.mcsrvstat.us/icon/${hostname}`,
+        : `https://api.mcstatus.io/v2/icon/${hostname}`,
     });
 
     embed.setColor(colour_green);
