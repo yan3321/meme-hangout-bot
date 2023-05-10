@@ -1,7 +1,6 @@
 import pkg from "minecraft-server-util";
 const { status: mcStatus, RCON } = pkg;
 
-import dataUriToBuffer from "data-uri-to-buffer";
 import { promises as dns } from "dns";
 
 import config from "../config.js";

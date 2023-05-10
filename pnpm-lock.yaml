@@ -7,9 +7,6 @@ dependencies:
   '@discordjs/rest':
     specifier: ^1.7.1
     version: 1.7.1
-  data-uri-to-buffer:
-    specifier: ^4.0.1
-    version: 4.0.1
   discord-api-types:
     specifier: ^0.37.42
     version: 0.37.42
@@ -145,11 +142,6 @@ packages:
     engines: {node: '>=10.16.0'}
     dependencies:
       streamsearch: 1.1.0
-    dev: false
-
-  /data-uri-to-buffer@4.0.1:
-    resolution: {integrity: sha512-0R9ikRb668HB7QDxT1vkpuUBtqc53YyAwMwGeUFKRojY/NWKvdZ+9UYtRfGmhqNbRkTSVpMbmyhXipFFv2cb/A==}
-    engines: {node: '>= 12'}
     dev: false
 
   /discord-api-types@0.37.42:
