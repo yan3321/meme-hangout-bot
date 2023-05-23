@@ -17,11 +17,11 @@
     "discord-api-types": "^0.37.42",
     "discord.js": "^14.11.0",
     "dotenv-safe": "^8.2.0",
-    "minecraft-server-util": "^5.4.2"
+    "minecraft-server-util": "^5.4.4"
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
-    "@types/node": "^18.16.12",
+    "@types/node": "^18.16.14",
     "typescript": "^5.0.4"
   }
 }
