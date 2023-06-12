@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
-    "@types/node": "^18.16.16",
+    "@types/node": "^18.16.17",
     "typescript": "^5.1.3"
   }
 }
