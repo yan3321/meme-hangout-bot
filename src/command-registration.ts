@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import { Client, Events } from "discord.js";
 import { REST } from "@discordjs/rest";
 import {
   RESTPostAPIApplicationCommandsJSONBody,
@@ -31,7 +31,7 @@ export async function registerCommands(client: Client) {
       const data = commandData.data;
       const interactionHandler = commandData.handleInteraction;
       commands.push(data.toJSON());
-      client.on("interactionCreate", async (interaction) => {
+      client.on(Events.InteractionCreate, async (interaction) => {
         if (interaction.isChatInputCommand()) {
           if (data.name === interaction.commandName) {
             try {

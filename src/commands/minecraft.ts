@@ -85,6 +85,7 @@ async function handleInteraction(
   const subcommandGroup = interaction.options.getSubcommandGroup(false);
   const subcommand = interaction.options.getSubcommand(true);
   if (subcommandGroup === "whitelist") {
+    await interaction.deferReply();
     const offline = await serverOffline();
     if (!offline) {
       const reply = await rconHandler(
@@ -98,6 +99,7 @@ async function handleInteraction(
       );
     }
   } else if (subcommand === "status") {
+    await interaction.deferReply();
     const status = await getStatusEmbed();
     await interaction.reply({
       content: `Here is the current Minecraft server status!`,
