@@ -85,29 +85,29 @@ async function handleInteraction(
   const subcommandGroup = interaction.options.getSubcommandGroup(false);
   const subcommand = interaction.options.getSubcommand(true);
   if (subcommandGroup === "whitelist") {
-    await interaction.deferReply();
     const offline = await serverOffline();
     if (!offline) {
       const reply = await rconHandler(
         interaction.options.getSubcommand(true),
         interaction.options.getString("username", false) ?? undefined
       );
-      if (reply) await interaction.reply(reply);
+      if (reply) await interaction.editReply(reply);
     } else {
-      await interaction.reply(
+      await interaction.editReply(
         `The Minecraft server appears to be unreachable at the moment.`
       );
     }
   } else if (subcommand === "status") {
-    await interaction.deferReply();
     const status = await getStatusEmbed();
-    await interaction.reply({
+    await interaction.editReply({
       content: `Here is the current Minecraft server status!`,
       embeds: status.embeds,
       files: status.files,
     });
   } else {
-    await interaction.reply(`Unfortunately, I can't answer that right now!`);
+    await interaction.editReply(
+      `Unfortunately, I can't answer that right now!`
+    );
   }
 }
 

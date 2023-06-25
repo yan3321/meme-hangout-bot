@@ -35,10 +35,11 @@ export async function registerCommands(client: Client) {
         if (interaction.isChatInputCommand()) {
           if (data.name === interaction.commandName) {
             try {
+              await interaction.deferReply();
               await interactionHandler(interaction);
             } catch (error) {
               console.error(error);
-              await interaction.reply(
+              await interaction.editReply(
                 "There was an error processing your command, sorry!"
               );
             }
