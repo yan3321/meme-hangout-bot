@@ -14,14 +14,14 @@
   "dependencies": {
     "@discordjs/builders": "^1.6.3",
     "@discordjs/rest": "^1.7.1",
-    "discord-api-types": "^0.37.43",
+    "discord-api-types": "^0.37.46",
     "discord.js": "^14.11.0",
     "dotenv-safe": "^8.2.0",
     "minecraft-server-util": "^5.4.4"
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.2",
-    "@types/node": "^18.16.17",
+    "@types/node": "^18.16.18",
     "typescript": "^5.1.3"
   }
 }
